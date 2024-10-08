@@ -574,7 +574,7 @@ import JwtService from "@/services/jwt.service";
 import { dateFromDateTime, dateFromTimeStamp } from "@/common/helpers.js";
 import CandidateGridView from "../../components/connections/CandidateGridView.vue";
 import Notification from "@/common/notification.js";
-import { openModalRoute } from "@/plugins/modal/modal.mixin";
+// import { openModalRoute } from "@/plugins/modal/modal.mixin";
 import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 // import ApiService from "../../services/api.service";
 export default {
@@ -583,16 +583,6 @@ export default {
     TeamOffRedirection,
     CandidateGridView,
     Candidate,
-  },
-  sockets: {
-    connect: function () {
-      console.log("socket connected");
-    },
-    ping: function (data) {
-      console.log(
-        'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-      );
-    },
   },
   data() {
     return {
@@ -689,7 +679,7 @@ export default {
     this.getActiveTeamId();
   },
   watch: {
-    teamId: function (newQuestion, oldQuestion) {
+    teamId: function () {
       this.loadConnections();
     },
   },
@@ -973,7 +963,7 @@ export default {
           };
           vm.innerLoading = true;
           try {
-            const response = await vm.$store.dispatch("disconnectTeam", {
+             await vm.$store.dispatch("disconnectTeam", {
               connection_id: connection.connection_id,
             });
             vm.innerLoading = false;

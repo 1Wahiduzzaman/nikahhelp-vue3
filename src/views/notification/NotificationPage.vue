@@ -83,16 +83,6 @@ import ApiService from "@/services/api.service";
 import { openModalRoute } from "@/plugins/modal/modal.mixin";
 export default {
   name: "NotificationPage",
-  sockets: {
-    connect: function () {
-      console.log("socket connected");
-    },
-    ping: function (data) {
-      console.log(
-        'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-      );
-    },
-  },
   components: {
     Notification,
   },

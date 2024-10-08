@@ -39,7 +39,7 @@ export default {
       this.$webSocket.onmessage = ($event) => {
         let res = JSON.parse($event.data);
   
-        if(res.event = 'ping_success') {
+        if(res.event == 'ping_success') {
           console.log('ping success', res);
           if (res && res.data.online_users) {
             this.$store.state.chat.online_users = res.data.online_users;
